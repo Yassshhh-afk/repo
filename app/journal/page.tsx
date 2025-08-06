@@ -1,0 +1,233 @@
+import { Libre_Baskerville } from 'next/font/google'
+import { Button } from "@/components/ui/button"
+import Link from "next/link"
+import Footer from '../../components/footer'
+import SimplePreloader from '../../components/simple-preloader'
+
+const libreBaskerville = Libre_Baskerville({
+  subsets: ['latin'],
+  weight: ['400', '700'],
+  style: ['normal', 'italic'],
+  display: 'swap',
+})
+
+const blogPosts = [
+  {
+    id: 1,
+    category: "Akashic 101",
+    title: "What Are the Akashic Records?",
+    excerpt: "Discover what the Akashic Records truly are — the energetic archive of your soul's entire journey, and how they hold wisdom beyond time.",
+    slug: "what-are-akashic-records"
+  },
+  {
+    id: 2,
+    category: "Personal Journey",
+    title: "How an Akashic Reading Changed My Life",
+    excerpt: "A personal story of transformation through an Akashic session, uncovering deep healing, soul truths, and renewed purpose.",
+    slug: "akashic-reading-changed-my-life"
+  },
+  {
+    id: 3,
+    category: "Readiness",
+    title: "Signs You're Ready for an Akashic Reading",
+    excerpt: "Are you feeling stuck or questioning your path? Here are clear signals that your soul is ready for the wisdom of the Records.",
+    slug: "signs-ready-for-akashic-reading"
+  },
+  {
+    id: 4,
+    category: "Past Lives",
+    title: "Past Life Memories vs. Imagination – How to Tell",
+    excerpt: "Is that vivid dream a memory or fantasy? Learn how to distinguish true past-life impressions from imagination.",
+    slug: "past-life-memories-vs-imagination"
+  },
+  {
+    id: 5,
+    category: "Spirituality",
+    title: "The Sacred Art of Soul Healing",
+    excerpt: "Explore the profound practice of soul healing and how it can transform deep-seated patterns and emotional wounds.",
+    slug: "sacred-art-soul-healing"
+  },
+  {
+    id: 6,
+    category: "Growth",
+    title: "Navigating Your Spiritual Awakening",
+    excerpt: "A guide to understanding and embracing the often challenging but transformative process of spiritual awakening.",
+    slug: "navigating-spiritual-awakening"
+  },
+  {
+    id: 7,
+    category: "Energy Work",
+    title: "Clearing Energetic Blockages for Success",
+    excerpt: "Learn how energetic blockages can impact your professional life and discover techniques to clear them for greater success.",
+    slug: "clearing-energetic-blockages"
+  },
+  {
+    id: 8,
+    category: "Meditation",
+    title: "Daily Practices for Spiritual Connection",
+    excerpt: "Simple yet powerful daily practices that can deepen your spiritual connection and enhance your intuitive abilities.",
+    slug: "daily-spiritual-practices"
+  },
+  {
+    id: 9,
+    category: "Career",
+    title: "Finding Your Soul's Purpose in Work",
+    excerpt: "Discover how to align your career with your soul's purpose and create meaningful work that fulfills your deepest calling.",
+    slug: "souls-purpose-in-work"
+  }
+]
+
+export default function JournalPage() {
+  return (
+    <>
+      <SimplePreloader />
+      <div className={`min-h-screen bg-[#c4bcb0] text-black ${libreBaskerville.className}`}>
+        {/* Navigation */}
+        <nav className="flex items-center justify-between px-6 py-4 md:px-12 md:py-6">
+          <Link href="/" className="text-xl md:text-2xl">
+            AkashicReading.
+          </Link>
+          
+          <div className="hidden md:flex items-center space-x-8">
+            <Link href="/about" className="hover:text-[#2c365a] transition-colors">
+              About
+            </Link>
+            <Link href="/services" className="hover:text-[#2c365a] transition-colors">
+              Services
+            </Link>
+            <Link href="/journal" className="text-[#2c365a] font-semibold transition-colors">
+              Journal
+            </Link>
+            <Link href="#contact" className="hover:text-[#2c365a] transition-colors">
+              Contact
+            </Link>
+          </div>
+
+          <Button 
+            className="bg-[#2c365a] text-white hover:bg-[#1f2742] px-6 py-2 rounded-lg shadow-md transition-all duration-200"
+          >
+            Book Now
+          </Button>
+        </nav>
+
+        {/* Header Section */}
+        <section className="px-6 md:px-12 py-16 md:py-24">
+          <div className="max-w-4xl mx-auto text-center">
+            <p className="text-sm md:text-base text-[#2c365a] uppercase tracking-wider font-semibold mb-6">
+              My Blog
+            </p>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-8">
+              Recent Writings
+            </h1>
+            
+            <p className="text-lg md:text-xl leading-relaxed text-black/80 max-w-2xl mx-auto">
+              Insights, wisdom, and guidance from my journey as a spiritual guide and coach. Explore articles on Akashic Records, personal transformation, and soul-level healing.
+            </p>
+          </div>
+        </section>
+
+        {/* Blog Grid */}
+        <section className="bg-white px-6 md:px-12 py-16 md:py-24">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map((post) => (
+                <article
+                  key={post.id}
+                  className="group bg-[#c4bcb0]/20 p-8 rounded-xl hover:bg-[#2c365a] transition-all duration-500 cursor-pointer hover:shadow-2xl hover:scale-105"
+                >
+                  <div className="space-y-6">
+                    
+                    {/* Category */}
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm font-semibold text-[#2c365a] group-hover:text-white/80 transition-colors duration-500 uppercase tracking-wider">
+                        {post.category}
+                      </span>
+                      <div className="w-6 h-6 flex items-center justify-center">
+                        <svg 
+                          className="w-4 h-4 text-[#2c365a] group-hover:text-white transition-colors duration-500" 
+                          fill="none" 
+                          stroke="currentColor" 
+                          viewBox="0 0 24 24"
+                        >
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                        </svg>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-black group-hover:text-white transition-colors duration-500 leading-tight">
+                      {post.title}
+                    </h3>
+
+                    {/* Excerpt */}
+                    <p className="text-base leading-relaxed text-black/70 group-hover:text-white/80 transition-colors duration-500">
+                      {post.excerpt}
+                    </p>
+
+                    {/* Read More Link */}
+                    <div className="pt-2">
+                      <span className="text-sm font-semibold text-[#2c365a] group-hover:text-white transition-colors duration-500">
+                        Read More →
+                      </span>
+                    </div>
+
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Newsletter Section */}
+        <section className="bg-[#c4bcb0] px-6 md:px-12 py-16 md:py-24">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#2c365a] mb-6">
+              Stay Connected
+            </h2>
+            
+            <p className="text-lg leading-relaxed text-black/80 mb-8 max-w-2xl mx-auto">
+              Subscribe to receive the latest insights, spiritual guidance, and updates on new articles directly in your inbox.
+            </p>
+            
+            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Enter your email address"
+                className="flex-1 px-4 py-3 rounded-lg border border-black/20 bg-white/80 text-black placeholder:text-black/50 focus:outline-none focus:ring-2 focus:ring-[#2c365a] focus:border-transparent"
+              />
+              <Button 
+                className="bg-[#2c365a] text-white hover:bg-[#1f2742] px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+              >
+                Subscribe
+              </Button>
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <Footer />
+
+        {/* Mobile Navigation Menu */}
+        <div className="md:hidden fixed bottom-6 left-6 right-6">
+          <div className="bg-[#b5ada0] rounded-lg p-4 shadow-lg border border-black/10">
+            <div className="flex justify-around">
+              <Link href="/about" className="text-sm hover:text-[#2c365a] transition-colors">
+                About
+              </Link>
+              <Link href="/services" className="text-sm hover:text-[#2c365a] transition-colors">
+                Services
+              </Link>
+              <Link href="/journal" className="text-sm text-[#2c365a] font-semibold transition-colors">
+                Journal
+              </Link>
+              <Link href="#contact" className="text-sm hover:text-[#2c365a] transition-colors">
+                Contact
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  )
+}
