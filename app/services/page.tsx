@@ -117,30 +117,30 @@ export default function ServicesPage() {
   return (
     <>
       <SimplePreloader />
-      <div className={`min-h-screen bg-[#c4bcb0] text-black ${libreBaskerville.className}`}>
+      <div className={`min-h-screen galaxy-bg text-white ${libreBaskerville.className}`}>
         {/* Navigation */}
-        <nav className="flex items-center justify-between px-6 py-4 md:px-12 md:py-6">
-          <Link href="/" className="text-xl md:text-2xl">
+        <nav className="flex items-center justify-between px-6 py-4 md:px-12 md:py-6 bg-black/20 backdrop-blur-sm">
+          <Link href="/" className="text-xl md:text-2xl text-galaxy-gold">
             AkashicReading.
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/about" className="hover:text-[#2c365a] transition-colors">
+            <Link href="/about" className="hover:text-galaxy-gold transition-colors">
               About
             </Link>
-            <Link href="/services" className="text-[#2c365a] font-semibold transition-colors">
+            <Link href="/services" className="text-galaxy-gold font-semibold transition-colors">
               Services
             </Link>
-            <Link href="/journal" className="hover:text-[#2c365a] transition-colors">
+            <Link href="/journal" className="hover:text-galaxy-gold transition-colors">
               Journal
             </Link>
-            <Link href="#contact" className="hover:text-[#2c365a] transition-colors">
+            <Link href="/contact" className="hover:text-galaxy-gold transition-colors">
               Contact
             </Link>
           </div>
 
           <Button 
-            className="bg-[#2c365a] text-white hover:bg-[#1f2742] px-6 py-2 rounded-lg shadow-md transition-all duration-200"
+            className="bg-galaxy-deep-purple text-white hover:bg-galaxy-purple px-6 py-2 rounded-lg shadow-md transition-all duration-200"
           >
             Book Now
           </Button>
@@ -154,21 +154,21 @@ export default function ServicesPage() {
               {/* Left Column - Intro */}
               <div className="space-y-8">
                 <div className="space-y-6">
-                  <p className="text-sm md:text-base text-[#2c365a] uppercase tracking-wider font-semibold">
+                  <p className="text-sm md:text-base text-galaxy-gold uppercase tracking-wider font-semibold">
                     Services
                   </p>
                   
-                  <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight">
+                  <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight text-white">
                     High-Impact Services
                   </h1>
                   
-                  <p className="text-lg md:text-xl leading-relaxed text-black/80">
+                  <p className="text-lg md:text-xl leading-relaxed text-white/80">
                     Empowering professionals to unlock their highest potential through transformative coaching, spiritual guidance, and practical strategies. Whether you're navigating career transitions, seeking work-life balance, or connecting with your deeper purpose, these services are designed to create lasting change in your professional and personal life.
                   </p>
                 </div>
 
                 <div className="pt-4">
-                  <Button className="border border-black bg-transparent text-black px-8 py-3 rounded-lg hover:bg-black hover:text-white transition-all duration-300">
+                  <Button className="border border-galaxy-gold bg-transparent text-galaxy-gold px-8 py-3 rounded-lg hover:bg-galaxy-gold hover:text-black transition-all duration-300">
                     Schedule Consultation
                   </Button>
                 </div>
@@ -176,24 +176,24 @@ export default function ServicesPage() {
 
               {/* Right Column - Stats or Image */}
               <div className="space-y-8">
-                <div className="bg-white/50 p-8 rounded-xl">
-                  <h3 className="text-2xl font-bold text-[#2c365a] mb-6">Why Choose These Services?</h3>
+                <div className="bg-black/40 backdrop-blur-sm p-8 rounded-xl border border-galaxy-gold/20">
+                  <h3 className="text-2xl font-bold text-galaxy-gold mb-6">Why Choose These Services?</h3>
                   <div className="space-y-4">
                     <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-[#2c365a] rounded-full"></div>
-                      <span className="text-lg">Personalized approach to your unique challenges</span>
+                      <div className="w-2 h-2 bg-galaxy-gold rounded-full"></div>
+                      <span className="text-lg text-white/80">Personalized approach to your unique challenges</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-[#2c365a] rounded-full"></div>
-                      <span className="text-lg">Blend of practical and spiritual guidance</span>
+                      <div className="w-2 h-2 bg-galaxy-gold rounded-full"></div>
+                      <span className="text-lg text-white/80">Blend of practical and spiritual guidance</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-[#2c365a] rounded-full"></div>
-                      <span className="text-lg">Proven strategies for lasting transformation</span>
+                      <div className="w-2 h-2 bg-galaxy-gold rounded-full"></div>
+                      <span className="text-lg text-white/80">Proven strategies for lasting transformation</span>
                     </div>
                     <div className="flex items-center space-x-3">
-                      <div className="w-2 h-2 bg-[#2c365a] rounded-full"></div>
-                      <span className="text-lg">Ongoing support and accountability</span>
+                      <div className="w-2 h-2 bg-galaxy-gold rounded-full"></div>
+                      <span className="text-lg text-white/80">Ongoing support and accountability</span>
                     </div>
                   </div>
                 </div>
@@ -203,27 +203,27 @@ export default function ServicesPage() {
         </section>
 
         {/* Services Grid */}
-        <section className="bg-white px-6 md:px-12 py-16 md:py-24">
+        <section className="bg-black px-6 md:px-12 py-16 md:py-24 text-white">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {services.map((service) => (
                 <div
                   key={service.id}
-                  className="group bg-[#c4bcb0]/20 p-8 rounded-xl hover:bg-[#2c365a] transition-all duration-500 cursor-pointer hover:shadow-2xl hover:scale-105"
+                  className="group bg-galaxy-dark/40 backdrop-blur-sm p-8 rounded-xl hover:bg-galaxy-deep-purple/40 transition-all duration-500 cursor-pointer hover:shadow-2xl hover:scale-105 border border-galaxy-gold/20"
                 >
                   <div className="space-y-6">
                     {/* Service Number */}
                     <div className="flex items-center space-x-3">
-                      <span className="text-3xl font-bold text-[#2c365a] group-hover:text-white transition-colors duration-500">
+                      <span className="text-3xl font-bold text-galaxy-gold group-hover:text-white transition-colors duration-500">
                         {service.id}.
                       </span>
-                      <h3 className="text-xl font-bold group-hover:text-white transition-colors duration-500">
+                      <h3 className="text-xl font-bold text-white group-hover:text-galaxy-gold transition-colors duration-500">
                         {service.title}
                       </h3>
                     </div>
 
                     {/* Description */}
-                    <p className="text-base leading-relaxed text-black/80 group-hover:text-white/90 transition-colors duration-500">
+                    <p className="text-base leading-relaxed text-white/80 group-hover:text-white transition-colors duration-500">
                       {service.description}
                     </p>
 
@@ -231,8 +231,8 @@ export default function ServicesPage() {
                     <ul className="space-y-2">
                       {service.features.map((feature, index) => (
                         <li key={index} className="flex items-start space-x-3">
-                          <div className="w-1.5 h-1.5 bg-[#2c365a] group-hover:bg-white rounded-full mt-2 flex-shrink-0 transition-colors duration-500"></div>
-                          <span className="text-sm text-black/70 group-hover:text-white/80 transition-colors duration-500">
+                          <div className="w-1.5 h-1.5 bg-galaxy-gold group-hover:bg-white rounded-full mt-2 flex-shrink-0 transition-colors duration-500"></div>
+                          <span className="text-sm text-white/70 group-hover:text-white transition-colors duration-500">
                             {feature}
                           </span>
                         </li>
@@ -246,7 +246,7 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-[#2c365a] px-6 md:px-12 py-16 md:py-24">
+        <section className="bg-galaxy-deep-purple px-6 md:px-12 py-16 md:py-24">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight text-white mb-6">
               Ready to Transform Your Professional Journey?
@@ -257,7 +257,7 @@ export default function ServicesPage() {
             </p>
             
             <Button 
-              className="bg-[#c4bcb0] text-[#2c365a] hover:bg-[#b5ada0] px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
+              className="bg-galaxy-gold text-black hover:bg-yellow-400 px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
             >
               Book Your Session
             </Button>
@@ -269,18 +269,18 @@ export default function ServicesPage() {
 
         {/* Mobile Navigation Menu */}
         <div className="md:hidden fixed bottom-6 left-6 right-6">
-          <div className="bg-[#b5ada0] rounded-lg p-4 shadow-lg border border-black/10">
+          <div className="bg-galaxy-dark rounded-lg p-4 shadow-lg border border-galaxy-gold/20">
             <div className="flex justify-around">
-              <Link href="/about" className="text-sm hover:text-[#2c365a] transition-colors">
+              <Link href="/about" className="text-sm text-white hover:text-galaxy-gold transition-colors">
                 About
               </Link>
-              <Link href="/services" className="text-sm text-[#2c365a] font-semibold transition-colors">
+              <Link href="/services" className="text-sm text-galaxy-gold font-semibold transition-colors">
                 Services
               </Link>
-              <Link href="/journal" className="text-sm hover:text-[#2c365a] transition-colors">
+              <Link href="/journal" className="text-sm text-white hover:text-galaxy-gold transition-colors">
                 Journal
               </Link>
-              <Link href="#contact" className="text-sm hover:text-[#2c365a] transition-colors">
+              <Link href="/contact" className="text-sm text-white hover:text-galaxy-gold transition-colors">
                 Contact
               </Link>
             </div>

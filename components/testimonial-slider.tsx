@@ -102,17 +102,19 @@ export default function TestimonialSlider() {
 
           {/* Testimonial Text */}
           <div className="mb-8">
-            <p className="text-lg md:text-xl leading-relaxed text-black/90 italic">
-              "{currentTestimonial.text}"
-            </p>
+            <p className="text-lg md:text-xl leading-relaxed text-white italic">
+            "{currentTestimonial.text}"
+           </p>
+
           </div>
 
           {/* Client Info */}
           <div className="mb-8">
-            <h4 className="text-xl md:text-2xl font-bold text-[#2c365a] mb-1">
+            <h4 className="text-xl md:text-2xl font-bold text-galaxy-gold mb-1">
               {currentTestimonial.name}
             </h4>
-            <p className="text-base md:text-lg font-semibold text-black/70">
+
+            <p className="text-base md:text-lg font-semibold text-white/80">
               {currentTestimonial.role}
             </p>
           </div>

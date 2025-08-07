@@ -81,30 +81,30 @@ export default function JournalPage() {
   return (
     <>
       <SimplePreloader />
-      <div className={`min-h-screen bg-[#c4bcb0] text-black ${libreBaskerville.className}`}>
+      <div className={`min-h-screen galaxy-bg text-white ${libreBaskerville.className}`}>
         {/* Navigation */}
-        <nav className="flex items-center justify-between px-6 py-4 md:px-12 md:py-6">
-          <Link href="/" className="text-xl md:text-2xl">
+        <nav className="flex items-center justify-between px-6 py-4 md:px-12 md:py-6 bg-black/20 backdrop-blur-sm">
+          <Link href="/" className="text-xl md:text-2xl text-galaxy-gold">
             AkashicReading.
           </Link>
           
           <div className="hidden md:flex items-center space-x-8">
-            <Link href="/about" className="hover:text-[#2c365a] transition-colors">
+            <Link href="/about" className="hover:text-galaxy-gold transition-colors">
               About
             </Link>
-            <Link href="/services" className="hover:text-[#2c365a] transition-colors">
+            <Link href="/services" className="hover:text-galaxy-gold transition-colors">
               Services
             </Link>
-            <Link href="/journal" className="text-[#2c365a] font-semibold transition-colors">
+            <Link href="/journal" className="text-galaxy-gold font-semibold transition-colors">
               Journal
             </Link>
-            <Link href="#contact" className="hover:text-[#2c365a] transition-colors">
+            <Link href="/contact" className="hover:text-galaxy-gold transition-colors">
               Contact
             </Link>
           </div>
 
           <Button 
-            className="bg-[#2c365a] text-white hover:bg-[#1f2742] px-6 py-2 rounded-lg shadow-md transition-all duration-200"
+            className="bg-galaxy-deep-purple text-white hover:bg-galaxy-purple px-6 py-2 rounded-lg shadow-md transition-all duration-200"
           >
             Book Now
           </Button>
@@ -113,39 +113,39 @@ export default function JournalPage() {
         {/* Header Section */}
         <section className="px-6 md:px-12 py-16 md:py-24">
           <div className="max-w-4xl mx-auto text-center">
-            <p className="text-sm md:text-base text-[#2c365a] uppercase tracking-wider font-semibold mb-6">
+            <p className="text-sm md:text-base text-galaxy-gold uppercase tracking-wider font-semibold mb-6">
               My Blog
             </p>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-8">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-8 text-white">
               Recent Writings
             </h1>
             
-            <p className="text-lg md:text-xl leading-relaxed text-black/80 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl leading-relaxed text-white/80 max-w-2xl mx-auto">
               Insights, wisdom, and guidance from my journey as a spiritual guide and coach. Explore articles on Akashic Records, personal transformation, and soul-level healing.
             </p>
           </div>
         </section>
 
         {/* Blog Grid */}
-        <section className="bg-white px-6 md:px-12 py-16 md:py-24">
+        <section className="bg-black px-6 md:px-12 py-16 md:py-24">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {blogPosts.map((post) => (
                 <article
                   key={post.id}
-                  className="group bg-[#c4bcb0]/20 p-8 rounded-xl hover:bg-[#2c365a] transition-all duration-500 cursor-pointer hover:shadow-2xl hover:scale-105"
+                  className="group bg-galaxy-dark/40 backdrop-blur-sm p-8 rounded-xl hover:bg-galaxy-deep-purple/40 transition-all duration-500 cursor-pointer hover:shadow-2xl hover:scale-105 border border-galaxy-gold/20"
                 >
                   <div className="space-y-6">
                     
                     {/* Category */}
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-[#2c365a] group-hover:text-white/80 transition-colors duration-500 uppercase tracking-wider">
+                      <span className="text-sm font-semibold text-galaxy-gold group-hover:text-white transition-colors duration-500 uppercase tracking-wider">
                         {post.category}
                       </span>
                       <div className="w-6 h-6 flex items-center justify-center">
                         <svg 
-                          className="w-4 h-4 text-[#2c365a] group-hover:text-white transition-colors duration-500" 
+                          className="w-4 h-4 text-galaxy-gold group-hover:text-white transition-colors duration-500" 
                           fill="none" 
                           stroke="currentColor" 
                           viewBox="0 0 24 24"
@@ -156,18 +156,18 @@ export default function JournalPage() {
                     </div>
 
                     {/* Title */}
-                    <h3 className="text-xl font-bold text-black group-hover:text-white transition-colors duration-500 leading-tight">
+                    <h3 className="text-xl font-bold text-white group-hover:text-galaxy-gold transition-colors duration-500 leading-tight">
                       {post.title}
                     </h3>
 
                     {/* Excerpt */}
-                    <p className="text-base leading-relaxed text-black/70 group-hover:text-white/80 transition-colors duration-500">
+                    <p className="text-base leading-relaxed text-white/70 group-hover:text-white transition-colors duration-500">
                       {post.excerpt}
                     </p>
 
                     {/* Read More Link */}
                     <div className="pt-2">
-                      <span className="text-sm font-semibold text-[#2c365a] group-hover:text-white transition-colors duration-500">
+                      <span className="text-sm font-semibold text-galaxy-gold group-hover:text-white transition-colors duration-500">
                         Read More →
                       </span>
                     </div>
@@ -180,13 +180,13 @@ export default function JournalPage() {
         </section>
 
         {/* Newsletter Section */}
-        <section className="bg-[#c4bcb0] px-6 md:px-12 py-16 md:py-24">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#2c365a] mb-6">
+        <section className="galaxy-bg px-6 md:px-12 py-16 md:py-24">
+          <div className="max-w-4xl mx-auto text-center bg-black/40 backdrop-blur-sm rounded-2xl p-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-galaxy-gold mb-6">
               Stay Connected
             </h2>
             
-            <p className="text-lg leading-relaxed text-black/80 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg leading-relaxed text-white/80 mb-8 max-w-2xl mx-auto">
               Subscribe to receive the latest insights, spiritual guidance, and updates on new articles directly in your inbox.
             </p>
             
@@ -194,10 +194,10 @@ export default function JournalPage() {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 rounded-lg border border-black/20 bg-white/80 text-black placeholder:text-black/50 focus:outline-none focus:ring-2 focus:ring-[#2c365a] focus:border-transparent"
+                className="flex-1 px-4 py-3 rounded-lg border border-galaxy-gold/20 bg-black/40 backdrop-blur-sm text-white placeholder:text-white/50 focus:outline-none focus:ring-2 focus:ring-galaxy-gold focus:border-transparent"
               />
               <Button 
-                className="bg-[#2c365a] text-white hover:bg-[#1f2742] px-6 py-3 rounded-lg font-semibold transition-all duration-300"
+                className="bg-galaxy-gold text-black hover:bg-yellow-400 px-6 py-3 rounded-lg font-semibold transition-all duration-300"
               >
                 Subscribe
               </Button>
@@ -210,18 +210,18 @@ export default function JournalPage() {
 
         {/* Mobile Navigation Menu */}
         <div className="md:hidden fixed bottom-6 left-6 right-6">
-          <div className="bg-[#b5ada0] rounded-lg p-4 shadow-lg border border-black/10">
+          <div className="bg-galaxy-dark rounded-lg p-4 shadow-lg border border-galaxy-gold/20">
             <div className="flex justify-around">
-              <Link href="/about" className="text-sm hover:text-[#2c365a] transition-colors">
+              <Link href="/about" className="text-sm text-white hover:text-galaxy-gold transition-colors">
                 About
               </Link>
-              <Link href="/services" className="text-sm hover:text-[#2c365a] transition-colors">
+              <Link href="/services" className="text-sm text-white hover:text-galaxy-gold transition-colors">
                 Services
               </Link>
-              <Link href="/journal" className="text-sm text-[#2c365a] font-semibold transition-colors">
+              <Link href="/journal" className="text-sm text-galaxy-gold font-semibold transition-colors">
                 Journal
               </Link>
-              <Link href="#contact" className="text-sm hover:text-[#2c365a] transition-colors">
+              <Link href="/contact" className="text-sm text-white hover:text-galaxy-gold transition-colors">
                 Contact
               </Link>
             </div>

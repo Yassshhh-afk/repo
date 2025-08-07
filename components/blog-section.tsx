@@ -35,45 +35,53 @@ const blogPosts = [
 
 export default function BlogSection() {
   return (
-    <section className="bg-white px-6 md:px-12 py-16 md:py-24">
+    <section className="galaxy-bg px-6 md:px-12 py-16 md:py-24">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
-        <div className="text-center mb-12">
-          <p className="text-sm md:text-base text-[#2c365a] uppercase tracking-wider font-semibold mb-4">
+        <div className="text-center mb-12 bg-black/40 backdrop-blur-sm rounded-2xl p-8">
+          <p className="text-sm md:text-base text-galaxy-gold uppercase tracking-wider font-semibold mb-4 animate-fadeInUp">
             Recent Articles
           </p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight text-[#1d2e28]">
-            Latest from the Blog.
+          <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight text-white animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
+            Latest from the Blog
           </h2>
         </div>
 
         {/* Blog Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-          {blogPosts.map((post) => (
+          {blogPosts.map((post, index) => (
             <article
               key={post.id}
-              className="group bg-[#f9f2e5] rounded-xl p-6 shadow-sm hover:shadow-lg transition-all duration-300 cursor-pointer hover:bg-[#2c365a] hover:scale-105"
+              className="group bg-black/40 backdrop-blur-sm rounded-xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer hover:bg-galaxy-deep-purple/40 hover:scale-105 border border-galaxy-gold/20 animate-fadeInUp"
+              style={{ animationDelay: `${0.3 + index * 0.1}s` }}
             >
               <div className="space-y-4">
                 
                 {/* Category Label */}
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-[#2c365a] group-hover:text-white/80 transition-colors duration-300">
+                  <span className="text-sm font-medium text-galaxy-gold group-hover:text-white transition-colors duration-300">
                     {post.category}
                   </span>
-                  <ArrowUpRight className="w-4 h-4 text-[#2c365a] group-hover:text-white transition-colors duration-300" />
+                  <ArrowUpRight className="w-4 h-4 text-galaxy-gold group-hover:text-white transition-all duration-300 group-hover:scale-110" />
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold text-[#1d2e28] group-hover:text-white transition-colors duration-300 leading-tight">
+                <h3 className="text-xl font-bold text-white group-hover:text-galaxy-gold transition-colors duration-300 leading-tight">
                   {post.title}
                 </h3>
 
                 {/* Summary */}
-                <p className="text-sm text-[#1d2e28]/70 group-hover:text-white/80 transition-colors duration-300 leading-relaxed">
+                <p className="text-sm text-white/70 group-hover:text-white transition-colors duration-300 leading-relaxed">
                   {post.summary}
                 </p>
+
+                {/* Read More Link */}
+                <div className="pt-2">
+                  <span className="text-sm font-semibold text-galaxy-gold group-hover:text-white transition-colors duration-300">
+                    Read More →
+                  </span>
+                </div>
 
               </div>
             </article>

@@ -77,7 +77,16 @@ html {
   scroll-behavior: smooth;
 }
 
-/* Simple fade in animation */
+/* Galaxy background utility class */
+.galaxy-bg {
+  background-image: url('/galaxy-background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Enhanced animations */
 @keyframes fadeInUp {
   from {
     opacity: 0;
@@ -89,6 +98,124 @@ html {
   }
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
 .animate-fadeInUp {
-  animation: fadeInUp 0.8s ease-out;
+  animation: fadeInUp 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.8s ease-out forwards;
+  opacity: 0;
+}
+
+.animate-scaleIn {
+  animation: scaleIn 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+/* Improved galaxy theme colors with better gold */
+.text-galaxy-gold {
+  color: #B8860B;
+  background: linear-gradient(135deg, #FFD700, #B8860B, #DAA520);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: 200% 200%;
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+.text-galaxy-purple {
+  color: #8B5CF6;
+}
+
+.bg-galaxy-purple {
+  background-color: #6B46C1;
+}
+
+.bg-galaxy-dark {
+  background-color: #1F1B2E;
+}
+
+.bg-galaxy-gold {
+  background: linear-gradient(135deg, #FFD700, #B8860B, #DAA520);
+}
+
+.border-galaxy-gold {
+  border-color: #B8860B;
+}
+
+/* Hover effects */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Text glow effect */
+.text-glow {
+  text-shadow: 0 0 10px rgba(184, 134, 11, 0.5);
 }
