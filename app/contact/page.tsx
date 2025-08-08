@@ -1,8 +1,11 @@
+'use client'
+
+import { useState } from 'react'
 import { Libre_Baskerville } from 'next/font/google'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Phone, Mail, MessageCircle, MapPin, Clock, Star } from 'lucide-react'
+import { Phone, Mail, MessageCircle, MapPin, Clock, Star, CheckCircle } from 'lucide-react'
 import Link from "next/link"
 import Footer from '../../components/footer'
 import SimplePreloader from '../../components/simple-preloader'
@@ -15,6 +18,60 @@ const libreBaskerville = Libre_Baskerville({
 })
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [error, setError] = useState('')
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }))
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setIsSubmitted(true)
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          subject: '',
+          message: ''
+        })
+      } else {
+        setError(result.error || 'Failed to send message')
+      }
+    } catch (error) {
+      setError('Network error. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
   return (
     <>
       <SimplePreloader />
@@ -75,85 +132,118 @@ export default function ContactPage() {
                   Send us a Message
                 </h2>
                 
-                <form className="space-y-6" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {isSubmitted ? (
+                  <div className="text-center py-8">
+                    <CheckCircle className="w-16 h-16 text-green-400 mx-auto mb-4" />
+                    <h3 className="text-xl font-semibold text-green-400 mb-2">Message Sent Successfully!</h3>
+                    <p className="text-white/80 mb-6">
+                      Thank you for reaching out. We'll get back to you within 24 hours.
+                    </p>
+                    <Button
+                      onClick={() => setIsSubmitted(false)}
+                      className="bg-galaxy-gold text-black hover:bg-galaxy-gold-light"
+                    >
+                      Send Another Message
+                    </Button>
+                  </div>
+                ) : (
+                  <form onSubmit={handleSubmit} className="space-y-6">
+                    {error && (
+                      <div className="bg-red-500/10 border border-red-500/20 rounded-lg p-3">
+                        <p className="text-red-400 text-sm">{error}</p>
+                      </div>
+                    )}
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <div>
+                        <label htmlFor="firstName" className="block text-sm font-medium text-white/80 mb-2">
+                          First Name *
+                        </label>
+                        <Input
+                          type="text"
+                          id="firstName"
+                          name="firstName"
+                          value={formData.firstName}
+                          onChange={handleInputChange}
+                          required
+                          className="bg-galaxy-dark/40 border-galaxy-gold/20 text-white placeholder:text-white/50 focus:border-galaxy-gold focus:ring-galaxy-gold"
+                          placeholder="Enter your first name"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="lastName" className="block text-sm font-medium text-white/80 mb-2">
+                          Last Name *
+                        </label>
+                        <Input
+                          type="text"
+                          id="lastName"
+                          name="lastName"
+                          value={formData.lastName}
+                          onChange={handleInputChange}
+                          required
+                          className="bg-galaxy-dark/40 border-galaxy-gold/20 text-white placeholder:text-white/50 focus:border-galaxy-gold focus:ring-galaxy-gold"
+                          placeholder="Enter your last name"
+                        />
+                      </div>
+                    </div>
+                    
                     <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium text-white/80 mb-2">
-                        First Name *
+                      <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-2">
+                        Email Address *
+                      </label>
+                      <Input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        required
+                        className="bg-galaxy-dark/40 border-galaxy-gold/20 text-white placeholder:text-white/50 focus:border-galaxy-gold focus:ring-galaxy-gold"
+                        placeholder="Enter your email address"
+                      />
+                    </div>
+                    
+                    <div>
+                      <label htmlFor="subject" className="block text-sm font-medium text-white/80 mb-2">
+                        Subject *
                       </label>
                       <Input
                         type="text"
-                        id="firstName"
-                        name="firstName"
+                        id="subject"
+                        name="subject"
+                        value={formData.subject}
+                        onChange={handleInputChange}
                         required
                         className="bg-galaxy-dark/40 border-galaxy-gold/20 text-white placeholder:text-white/50 focus:border-galaxy-gold focus:ring-galaxy-gold"
-                        placeholder="Enter your first name"
+                        placeholder="What's this about?"
                       />
                     </div>
+                    
                     <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium text-white/80 mb-2">
-                        Last Name *
+                      <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-2">
+                        Message *
                       </label>
-                      <Input
-                        type="text"
-                        id="lastName"
-                        name="lastName"
+                      <Textarea
+                        id="message"
+                        name="message"
+                        value={formData.message}
+                        onChange={handleInputChange}
                         required
-                        className="bg-galaxy-dark/40 border-galaxy-gold/20 text-white placeholder:text-white/50 focus:border-galaxy-gold focus:ring-galaxy-gold"
-                        placeholder="Enter your last name"
+                        rows={6}
+                        className="bg-galaxy-dark/40 border-galaxy-gold/20 text-white placeholder:text-white/50 focus:border-galaxy-gold focus:ring-galaxy-gold resize-none"
+                        placeholder="Tell us about your spiritual journey and what you're seeking guidance on..."
                       />
                     </div>
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-white/80 mb-2">
-                      Email Address *
-                    </label>
-                    <Input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="bg-galaxy-dark/40 border-galaxy-gold/20 text-white placeholder:text-white/50 focus:border-galaxy-gold focus:ring-galaxy-gold"
-                      placeholder="Enter your email address"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="subject" className="block text-sm font-medium text-white/80 mb-2">
-                      Subject *
-                    </label>
-                    <Input
-                      type="text"
-                      id="subject"
-                      name="subject"
-                      required
-                      className="bg-galaxy-dark/40 border-galaxy-gold/20 text-white placeholder:text-white/50 focus:border-galaxy-gold focus:ring-galaxy-gold"
-                      placeholder="What's this about?"
-                    />
-                  </div>
-                  
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-white/80 mb-2">
-                      Message *
-                    </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={6}
-                      className="bg-galaxy-dark/40 border-galaxy-gold/20 text-white placeholder:text-white/50 focus:border-galaxy-gold focus:ring-galaxy-gold resize-none"
-                      placeholder="Tell us about your spiritual journey and what you're seeking guidance on..."
-                    />
-                  </div>
-                  
-                  <Button 
-                    type="submit"
-                    className="w-full bg-galaxy-gold text-black hover:bg-galaxy-gold-light px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105"
-                  >
-                    Send Message
-                  </Button>
-                </form>
+                    
+                    <Button 
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full bg-galaxy-gold text-black hover:bg-galaxy-gold-light px-8 py-4 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl hover:scale-105 disabled:opacity-50"
+                    >
+                      {isSubmitting ? 'Sending...' : 'Send Message'}
+                    </Button>
+                  </form>
+                )}
               </div>
 
               {/* Right Column - Contact Information */}

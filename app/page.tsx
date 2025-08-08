@@ -111,16 +111,7 @@ export default function HomePage() {
                   </p>
                   
                   <div className="relative">
-                    {/* Geometric SVG Background */}
-                    <div className="absolute inset-0 flex items-center justify-start opacity-20 -z-10">
-                      <Image
-                        src="/geometric-pattern.svg"
-                        alt=""
-                        width={400}
-                        height={400}
-                        className="w-full max-w-sm object-contain"
-                      />
-                    </div>
+                    
                     
                     <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight relative z-20 text-white">
                       Connecting souls to their divine wisdom through sacred guidance
