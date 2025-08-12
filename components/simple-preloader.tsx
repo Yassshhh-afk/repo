@@ -1,6 +1,6 @@
-'use client'
+"use client"
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState } from "react"
 
 export default function SimplePreloader() {
   const [isLoading, setIsLoading] = useState(true)
@@ -19,54 +19,79 @@ export default function SimplePreloader() {
     }
 
     // Check if page is already loaded
-    if (document.readyState === 'complete') {
+    if (document.readyState === "complete") {
       handleLoad()
     } else {
-      window.addEventListener('load', handleLoad)
+      window.addEventListener("load", handleLoad)
     }
 
     return () => {
-      window.removeEventListener('load', handleLoad)
+      window.removeEventListener("load", handleLoad)
     }
   }, [])
 
   if (!isVisible) return null
 
   return (
-    <div 
+    <div
       className={`fixed inset-0 z-50 flex items-center justify-center galaxy-bg transition-opacity duration-500 ${
-        isLoading ? 'opacity-100' : 'opacity-0'
+        isLoading ? "opacity-100" : "opacity-0"
       }`}
     >
       <div className="text-center animate-fadeInUp">
-        <div className="relative mb-8">
-          {/* Outer spinning ring */}
-          <div className="w-20 h-20 border-4 border-galaxy-gold/20 border-t-galaxy-gold rounded-full animate-spin mx-auto"></div>
-          
-          {/* Inner spinning element */}
-          <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-16 h-16 border-4 border-galaxy-purple/20 border-b-galaxy-purple rounded-full animate-spin" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }}></div>
-          
-          {/* Center dot */}
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-2 h-2 bg-galaxy-gold rounded-full animate-pulse"></div>
+        <div className="relative mb-8 w-32 h-32 mx-auto">
+          {/* Floating orbs in circular pattern */}
+          <div className="absolute inset-0">
+            {[0, 1, 2, 3, 4, 5].map((index) => (
+              <div
+                key={index}
+                className="absolute w-3 h-3 bg-galaxy-gold rounded-full animate-pulse"
+                style={{
+                  top: `${50 + 40 * Math.sin((index * Math.PI) / 3)}%`,
+                  left: `${50 + 40 * Math.cos((index * Math.PI) / 3)}%`,
+                  transform: "translate(-50%, -50%)",
+                  animationDelay: `${index * 0.2}s`,
+                  animationDuration: "2s",
+                }}
+              />
+            ))}
+          </div>
+
+          {/* Central glowing element */}
+          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+            <div className="w-8 h-8 bg-gradient-to-r from-galaxy-gold to-galaxy-purple rounded-full animate-pulse shadow-lg shadow-galaxy-gold/50"></div>
+            <div className="absolute inset-0 w-8 h-8 bg-galaxy-gold/30 rounded-full animate-ping"></div>
+          </div>
         </div>
-        
-        <h1 className="text-2xl md:text-3xl text-galaxy-gold font-serif mb-4 animate-pulse">
-          AkashicReading.
-        </h1>
-        
+
+        <h1 className="text-2xl md:text-3xl text-galaxy-gold font-serif mb-4 animate-pulse">AkashicReading.</h1>
+
         <div className="flex justify-center space-x-1">
-          {[0, 1, 2].map((index) => (
+          {[0, 1, 2, 3, 4].map((index) => (
             <div
               key={index}
-              className="w-2 h-2 bg-galaxy-gold rounded-full animate-bounce"
+              className="w-1 h-6 bg-galaxy-gold rounded-full"
               style={{
-                animationDelay: `${index * 0.2}s`,
-                animationDuration: '1s'
+                animation: `wave 1.5s ease-in-out infinite`,
+                animationDelay: `${index * 0.1}s`,
               }}
             />
           ))}
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes wave {
+          0%, 100% { 
+            transform: scaleY(0.3);
+            opacity: 0.5;
+          }
+          50% { 
+            transform: scaleY(1);
+            opacity: 1;
+          }
+        }
+      `}</style>
     </div>
   )
 }
