@@ -101,8 +101,8 @@ export default function JournalPage() {
             <Link href="/about" className="hover:text-galaxy-gold transition-colors">
               About
             </Link>
-            <Link href="/services" className="hover:text-galaxy-gold transition-colors">
-              Services
+            <Link href="/my-book" className="hover:text-galaxy-gold transition-colors">
+              My Book
             </Link>
             <Link href="/journal" className="text-galaxy-gold font-semibold transition-colors">
               Journal
@@ -236,8 +236,8 @@ export default function JournalPage() {
               <Link href="/about" className="text-sm text-white hover:text-galaxy-gold transition-colors">
                 About
               </Link>
-              <Link href="/services" className="text-sm text-white hover:text-galaxy-gold transition-colors">
-                Services
+              <Link href="/my-book" className="text-sm text-white hover:text-galaxy-gold transition-colors">
+                My Book
               </Link>
               <Link href="/journal" className="text-sm text-galaxy-gold font-semibold transition-colors">
                 Journal

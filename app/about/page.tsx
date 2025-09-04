@@ -32,10 +32,10 @@ export default function AboutPage() {
               About
             </Link>
             <Link
-              href="/services"
+              href="/my-book"
               className="hover:text-galaxy-gold transition-all duration-300 hover:scale-105 animate-fadeInDown stagger-2"
             >
-              Services
+              My Book
             </Link>
             <Link
               href="/journal"
@@ -356,10 +356,10 @@ export default function AboutPage() {
                 About
               </Link>
               <Link
-                href="/services"
+                href="/my-book"
                 className="text-sm text-white hover:text-galaxy-gold transition-all duration-300 hover:scale-105"
               >
-                Services
+                My Book
               </Link>
               <Link
                 href="/journal"

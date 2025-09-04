@@ -17,6 +17,30 @@ const libreBaskerville = Libre_Baskerville({
   display: "swap",
 })
 
+const services = [
+  {
+    id: "01",
+    title: "Akashic Record Reading",
+    description: "Navigate your professional journey with clarity and confidence through personalized career guidance.",
+  },
+  {
+    id: "02",
+    title: "Confident Communication",
+    description:
+      "Craft a compelling professional narrative that showcases your unique value and attracts opportunities.",
+  },
+  {
+    id: "03",
+    title: "Stress Anxiety",
+    description: "Master the art of interviewing with confidence-building techniques and strategic preparation.",
+  },
+  {
+    id: "04",
+    title: "My Book",
+    description: "Develop healthy coping mechanisms and find inner peace through mindful stress management techniques.",
+  },
+]
+
 export default function HomePage() {
   return (
     <>
@@ -34,10 +58,10 @@ export default function HomePage() {
               About
             </Link>
             <Link
-              href="/services"
+              href="/my-book"
               className="hover:text-galaxy-gold transition-all duration-300 hover:scale-105 animate-fadeInDown stagger-2"
             >
-              Services
+              My Book
             </Link>
             <Link
               href="/journal"
@@ -62,7 +86,6 @@ export default function HomePage() {
         <main className="px-6 md:px-12 py-8 md:py-16">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-              
               {/* Left Column - Image */}
               <div className="space-y-6 order-1 lg:order-1 animate-scaleIn stagger-2">
                 <div className="relative hover-lift">
@@ -71,7 +94,7 @@ export default function HomePage() {
                     alt="Remya - Spiritual Guide"
                     width={600}
                     height={800}
-                    className="w-full max-w-md mx-auto rounded-lg shadow-2xl object-cover border-2 border-galaxy-gold/30 transition-all duration-500 hover:border-galaxy-gold/60 transform -scale-x-100" 
+                    className="w-full max-w-md mx-auto rounded-lg shadow-2xl object-cover border-2 border-galaxy-gold/30 transition-all duration-500 hover:border-galaxy-gold/60 transform -scale-x-100"
                     priority
                   />
                 </div>
@@ -90,7 +113,8 @@ export default function HomePage() {
                   <p className="text-lg md:text-xl text-galaxy-gold animate-fadeInUp stagger-1">Hello, I'm Remya</p>
 
                   <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight text-white animate-fadeInUp stagger-2">
-                    Who is <span className="text-galaxy-gold text-glow animate-float">Remya Krishnakripa</span> and How Can She Unlock Your Highest Potential?
+                    Who is <span className="text-galaxy-gold text-glow animate-float">Remya Krishnakripa</span> and How
+                    Can She Unlock Your Highest Potential?
                   </h1>
                 </div>
 
@@ -98,7 +122,7 @@ export default function HomePage() {
                   href="#about"
                   className="flex items-center space-x-3 pt-8 hover:text-galaxy-gold transition-all duration-300 animate-fadeInUp stagger-3 hover:scale-105"
                 >
-                  <span className="text-lg text-white/70">Scroll for more</span>
+                  <span className="text-lg text-white/70">Know More</span>
                   <ChevronDown className="w-5 h-5 animate-bounce text-galaxy-gold" />
                 </Link>
               </div>
@@ -106,94 +130,45 @@ export default function HomePage() {
           </div>
         </main>
 
-
-
-        {/* Services Section - Black Background */}
-        <section id="services" className="bg-black text-white px-6 md:px-12 py-16 md:py-24">
+        {/* Services Section */}
+        <section className="bg-black px-6 md:px-12 py-16 md:py-24 text-white">
           <div className="max-w-7xl mx-auto">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-              {/* Left Column */}
-              <div className="space-y-8 animate-fadeInUp">
-                <div className="space-y-6">
-                  <p className="text-sm md:text-base text-galaxy-gold uppercase tracking-wider font-semibold animate-fadeInUp stagger-1">
-                    Services
-                  </p>
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight mb-4 text-galaxy-gold text-glow">
+                My Services
+              </h2>
+            </div>
 
-                  <h2 className="text-3xl md:text-4xl lg:text-5xl leading-tight animate-fadeInUp stagger-2">
-                    My key areas of expertise.
-                  </h2>
-
-                  <p className="text-lg leading-relaxed text-white/80 animate-fadeInUp stagger-3">
-                    Through years of dedicated practice and spiritual development, I offer transformative guidance
-                    across multiple dimensions of healing and self-discovery, helping you unlock your soul's deepest
-                    wisdom and highest potential.
-                  </p>
-                </div>
-
-                <div className="pt-4 animate-fadeInUp stagger-4">
-                  <Link href="/services">
-                    <button className="border border-galaxy-gold bg-transparent text-galaxy-gold px-8 py-3 rounded-lg hover:bg-galaxy-gold hover:text-black transition-all duration-300 hover:scale-105 btn-hover-effect">
-                      View All Services
-                    </button>
-                  </Link>
-                </div>
-              </div>
-
-              {/* Right Column - Services Grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                {/* Service 1 */}
-                <div className="space-y-4 animate-fadeInUp hover-lift" style={{ animationDelay: "0.2s" }}>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl font-bold text-galaxy-gold">01.</span>
-                    <h3 className="text-xl font-semibold">Akashic Records Reading</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {services.map((service, index) => (
+                <Link key={service.id} href={`/${service.title.toLowerCase().replace(/\s+/g, "-")}`} className="block">
+                  <div className="bg-galaxy-dark/40 p-8 rounded-xl border border-galaxy-gold/20 hover:bg-galaxy-deep-purple/30 hover:scale-[1.02] transition-all duration-300 group cursor-pointer h-full">
+                    <div className="space-y-4">
+                      <span className="text-3xl font-bold text-galaxy-gold group-hover:scale-110 transition-transform duration-300">
+                        {service.id}.
+                      </span>
+                      <div>
+                        <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-galaxy-gold transition-colors duration-300">
+                          {service.title}
+                        </h3>
+                        <p className="text-base leading-relaxed text-white/80">{service.description}</p>
+                      </div>
+                      <div className="flex justify-end">
+                        <div className="text-galaxy-gold group-hover:translate-x-2 transition-transform duration-300">
+                          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <p className="text-base leading-relaxed text-white/80">
-                    Access your soul's eternal records to understand your life purpose, past experiences, and spiritual
-                    contracts. Gain clarity on recurring patterns and unlock your divine blueprint for transformation.
-                  </p>
-                </div>
-
-                {/* Service 2 */}
-                <div className="space-y-4 animate-fadeInUp hover-lift" style={{ animationDelay: "0.4s" }}>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl font-bold text-galaxy-gold">02.</span>
-                    <h3 className="text-xl font-semibold">Soul Healing Sessions</h3>
-                  </div>
-                  <p className="text-base leading-relaxed text-white/80">
-                    Deep energetic healing that addresses soul wounds, karmic patterns, and emotional blockages. Release
-                    what no longer serves you and step into your authentic power and wholeness.
-                  </p>
-                </div>
-
-                {/* Service 3 */}
-                <div className="space-y-4 animate-fadeInUp hover-lift" style={{ animationDelay: "0.6s" }}>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl font-bold text-galaxy-gold">03.</span>
-                    <h3 className="text-xl font-semibold">Spiritual Mentorship</h3>
-                  </div>
-                  <p className="text-base leading-relaxed text-white/80">
-                    Ongoing guidance for your spiritual journey through personalized mentorship. Develop your intuitive
-                    abilities, deepen your connection to divine wisdom, and navigate your awakening with confidence.
-                  </p>
-                </div>
-
-                {/* Service 4 */}
-                <div className="space-y-4 animate-fadeInUp hover-lift" style={{ animationDelay: "0.8s" }}>
-                  <div className="flex items-center space-x-3">
-                    <span className="text-2xl font-bold text-galaxy-gold">04.</span>
-                    <h3 className="text-xl font-semibold">Energy Clearing & Protection</h3>
-                  </div>
-                  <p className="text-base leading-relaxed text-white/80">
-                    Clear negative energies, attachments, and psychic debris that may be affecting your wellbeing. Learn
-                    powerful protection techniques to maintain your energetic sovereignty and spiritual clarity.
-                  </p>
-                </div>
-              </div>
+                </Link>
+              ))}
             </div>
           </div>
         </section>
 
-                {/* About Section */}
+        {/* About Section */}
         <section id="about" className="px-6 md:px-12 py-16 md:py-24 bg-black/40 backdrop-blur-sm">
           <div className="max-w-7xl mx-auto">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -338,10 +313,10 @@ export default function HomePage() {
                 About
               </Link>
               <Link
-                href="/services"
+                href="/my-book"
                 className="text-sm text-white hover:text-galaxy-gold transition-all duration-300 hover:scale-105"
               >
-                Services
+                My Book
               </Link>
               <Link
                 href="/journal"

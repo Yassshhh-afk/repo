@@ -2,7 +2,7 @@
 
 export default function WhatsAppButton() {
   const phoneNumber = "+918547009801"
-  const message = "Hello! I'm interested in learning more about your spiritual guidance services."
+  const message = "Hello! I'm interested in learning more about your spiritual guidance and Akashic Records readings."
 
   const handleWhatsAppClick = () => {
     const encodedMessage = encodeURIComponent(message)
