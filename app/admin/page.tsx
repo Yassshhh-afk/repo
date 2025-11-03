@@ -1,40 +1,47 @@
-'use client'
+"use client"
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { Libre_Baskerville } from 'next/font/google'
+import type React from "react"
+
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { Libre_Baskerville } from "next/font/google"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { Eye, EyeOff, Lock, Mail } from 'lucide-react'
+import { Eye, EyeOff, Lock, Mail } from "lucide-react"
 
 const libreBaskerville = Libre_Baskerville({
-  subsets: ['latin'],
-  weight: ['400', '700'],
-  style: ['normal', 'italic'],
-  display: 'swap',
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  display: "swap",
 })
 
 export default function AdminLogin() {
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
   const [showPassword, setShowPassword] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
-  const [error, setError] = useState('')
+  const [error, setError] = useState("")
   const router = useRouter()
+
+  const allowedAdmins = [
+    { email: "kondaneyash@gmail.com", password: "Skizoyash" },
+    { email: "yashkondane@gmail.com", password: "1234567" },
+  ]
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setIsLoading(true)
-    setError('')
+    setError("")
 
-    // Simple hardcoded authentication
-    if (email === 'kondaneyash@gmail.com' && password === 'Skizoyash') {
-      // Store auth in localStorage (in production, use proper JWT tokens)
-      localStorage.setItem('admin_authenticated', 'true')
-      localStorage.setItem('admin_email', email)
-      router.push('/admin/dashboard')
+    const isValid = allowedAdmins.some((a) => a.email === email && a.password === password)
+
+    if (isValid) {
+      localStorage.setItem("admin_authenticated", "true")
+      localStorage.setItem("admin_email", email)
+      router.push("/admin/dashboard")
     } else {
-      setError('Invalid email or password')
+      setError("Invalid email or password")
     }
 
     setIsLoading(false)
@@ -49,12 +56,8 @@ export default function AdminLogin() {
             <div className="w-16 h-16 bg-galaxy-gold/10 rounded-full flex items-center justify-center mx-auto mb-4">
               <Lock className="w-8 h-8 text-galaxy-gold" />
             </div>
-            <h1 className="text-2xl md:text-3xl font-bold text-galaxy-gold mb-2">
-              Admin Login
-            </h1>
-            <p className="text-white/70">
-              Access the admin dashboard
-            </p>
+            <h1 className="text-2xl md:text-3xl font-bold text-galaxy-gold mb-2">Admin Login</h1>
+            <p className="text-white/70">Access the admin dashboard</p>
           </div>
 
           {/* Login Form */}
@@ -90,7 +93,7 @@ export default function AdminLogin() {
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-galaxy-gold/60" />
                 <Input
-                  type={showPassword ? 'text' : 'password'}
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -113,15 +116,13 @@ export default function AdminLogin() {
               disabled={isLoading}
               className="w-full bg-galaxy-gold text-black hover:bg-galaxy-gold-light px-8 py-3 text-lg font-semibold rounded-lg shadow-lg transition-all duration-300 hover:shadow-xl disabled:opacity-50"
             >
-              {isLoading ? 'Signing In...' : 'Sign In'}
+              {isLoading ? "Signing In..." : "Sign In"}
             </Button>
           </form>
 
           {/* Footer */}
           <div className="mt-8 text-center">
-            <p className="text-white/50 text-sm">
-              Authorized personnel only
-            </p>
+            <p className="text-white/50 text-sm">Authorized personnel only</p>
           </div>
         </div>
       </div>
